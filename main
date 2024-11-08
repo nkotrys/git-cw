@@ -38,9 +38,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClickC(view: View) {
-        val ow = findViewById<TextView>(R.id.editTextNumberDecimal)
+        val ow = findViewById<TextView>(R.id.TextNumberMain)
+        val ow2 = findViewById<TextView>(R.id.TextNumberGreyed)
 
-        ow.text="4"
+        ow.text="0"
+        ow2.text="4"
         liczba1 = ""
         liczba2 = ""
         operator = ""
