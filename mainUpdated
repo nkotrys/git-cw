@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     var isEqualJustPressed: Boolean = false
     var isPositive: Boolean = true
 
-
+//wynik widoczny po wpisaniu liczby tylko, przy działaniu nic nie wyświetlać
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //var ow = findViewById<TextView>(R.id.editTextNumberDecimal).text
