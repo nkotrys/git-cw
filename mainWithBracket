@@ -48,7 +48,7 @@ fun getResult(firstNumber: String, secondNumber: String, equation: String): BigD
             indexStart = currentCalculation.indexOf('(')
             indexEnd = currentCalculation.indexOf(')')
             if(indexEnd == -1){
-                indexEnd = currentCalculation.length - 1
+                indexEnd = currentCalculation.length
             }
             subCalculation = parseAndCalculation(currentCalculation.substring(indexStart+1,indexEnd)).toString()
             if(indexEnd == currentCalculation.length - 1){
