@@ -1,0 +1,95 @@
+/**
+ * You can edit, run, and share this code.
+ * play.kotlinlang.org
+ */
+import java.math.BigDecimal
+import java.math.RoundingMode
+import kotlin.math.sqrt
+import kotlin.collections.ArrayList
+import kotlin.collections.List
+
+fun main() {
+    
+    var toSolve = "1+7/7*5+(3-2*2"
+    println(toSolve)
+    println(parseAndCalculation(toSolve))
+}
+
+fun getResult(firstNumber: String, secondNumber: String, equation: String): BigDecimal {
+        var result = 0.toBigDecimal()
+        if(equation == "*"){
+            result = firstNumber.toBigDecimal()*secondNumber.toBigDecimal()
+        }
+        else if(equation == "/"){
+            result = firstNumber.toBigDecimal().divide(secondNumber.toBigDecimal(),10, RoundingMode.HALF_UP).stripTrailingZeros()
+        }
+        else if(equation == "-"){
+            result = firstNumber.toBigDecimal()-secondNumber.toBigDecimal()
+        }
+        else if(equation == "+"){
+            result = firstNumber.toBigDecimal()+secondNumber.toBigDecimal()
+        }
+
+        return result
+    }
+
+    fun parseAndCalculation(calculation: String): BigDecimal {
+        var result = 0.toBigDecimal()
+        var number = ""
+        var resultTemp = ""
+        var numberList : MutableList<String> = ArrayList()
+        var equationList : MutableList<String> = ArrayList()
+        var currentCalculation = calculation
+        var indexStart = -1
+        var indexEnd = -1
+        var subCalculation = ""
+        
+        while(currentCalculation.contains('(')){
+            indexStart = currentCalculation.indexOf('(')
+            indexEnd = currentCalculation.indexOf(')')
+            if(indexEnd == -1){
+                indexEnd = currentCalculation.length - 1
+            }
+            subCalculation = parseAndCalculation(currentCalculation.substring(indexStart+1,indexEnd)).toString()
+            if(indexEnd == currentCalculation.length - 1){
+            	currentCalculation = currentCalculation.substring(0,indexStart) + subCalculation
+            }
+            else{
+            	currentCalculation = currentCalculation.substring(0,indexStart) + subCalculation + currentCalculation.substring(indexEnd + 1)
+            }
+            
+        }
+		
+        for(c in currentCalculation){
+            if(c == '*' || c == '-' || c == '+' || c == '/'){
+                numberList.add(number)
+                number = ""
+                equationList.add(c.toString())
+            }
+            else{
+                number = number + c.toString();
+            }
+        }
+        numberList.add(number)
+        
+        for((index,eq) in equationList.withIndex()){
+            if(eq == "*" || eq == "/"){
+                resultTemp = getResult(numberList.get(index),numberList.get(index+1),equationList.get(index)).toString()
+                numberList.set(index+1,resultTemp)
+                numberList.set(index,"xx")
+                equationList.set(index,"xx")
+            }
+        }
+        while(numberList.contains("xx")){
+        	numberList.remove("xx")
+            equationList.remove("xx")
+    	}
+        for((index,eq) in equationList.withIndex()){
+            resultTemp = getResult(numberList.get(index),numberList.get(index+1),equationList.get(index)).toString()
+            numberList.set(index+1,resultTemp)
+            numberList.set(index,"xx")
+            equationList.set(index,"xx")
+        }
+
+        return numberList.last().toBigDecimal()
+    }
