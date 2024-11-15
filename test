@@ -1,0 +1,16 @@
+    var currentCalculation = "3+(2*5)+8"
+            var indexStart = currentCalculation.indexOf('(')
+             var indexEnd = currentCalculation.indexOf(')')
+            if(indexEnd == -1){
+                indexEnd = currentCalculation.length
+            }
+            /*subCalculation = parseAndCalculation(currentCalculation.substring(indexStart+1,indexEnd)).toString()
+            if(indexEnd == currentCalculation.length - 1){
+            	currentCalculation = currentCalculation.substring(0,indexStart) + subCalculation
+            }
+            else{
+            	currentCalculation = currentCalculation.substring(0,indexStart) + subCalculation + currentCalculation.substring(indexEnd + 1)
+            }*/
+            println(indexStart)
+            println(indexEnd)
+            println(currentCalculation.substring(indexEnd + 1))
