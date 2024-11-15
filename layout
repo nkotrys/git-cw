@@ -15,58 +15,61 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="409dp"
-        android:layout_height="97dp"
+        android:layout_height="63dp"
         android:background="#2A2A2A"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/TextNumberResult"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:textAlignment="viewEnd"
+            android:textColor="#959494"
+            android:textSize="24sp" />
+
     </LinearLayout>
 
+
     <LinearLayout
-        android:layout_width="342dp"
-        android:layout_height="82dp"
+        android:id="@+id/linearLayout3"
+        android:layout_width="330dp"
+        android:layout_height="48dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.23">
+        app:layout_constraintVertical_bias="0.226">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="343dp"
+        android:layout_height="69dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9">
 
         <TextView
             android:id="@+id/TextNumberMain"
             android:layout_width="match_parent"
-            android:layout_height="43dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
             android:text="0"
             android:textAlignment="viewEnd"
             android:textColor="#FFFFFF"
             android:textSize="48sp" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="340dp"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.146" >
-
-        <TextView
-            android:id="@+id/TextNumberResult"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:ems="10"
-            android:textAlignment="viewEnd"
-            android:textColor="#959494"
-            android:textSize="24sp" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.Group
@@ -145,6 +148,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout2"
         app:layout_constraintVertical_bias="0.528" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="152dp"
+        android:layout_height="39dp"
+        android:backgroundTint="#353535"
+        android:text="losowanko"
+        android:textColor="#FFFFFF"
+        android:textColorLink="#353535"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:iconPadding="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.294" />
 
     <Button
         android:id="@+id/button13"
@@ -433,7 +454,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout2"
         app:layout_constraintVertical_bias="0.975" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
