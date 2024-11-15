@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     var numberOfEquation = 0
     var isPositive: Boolean = true
     var signs = arrayOf("-", "+", "*", "/")
+    var isOpenBracket = false
 
     //wynik widoczny po wpisaniu liczby tylko, przy działaniu nic nie wyświetlać
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -136,6 +137,7 @@ fun onClickC(view: View) {
     ow.text="0"
     ow2.text=""
     numberOfEquation = 0
+    isOpenBracket = false
 
 }
 
@@ -154,6 +156,12 @@ fun onClickBack(view: View) {
         ow.text = equation
         if(signs.contains(removed) && !signs.contains(equation.last().toString())){
             numberOfEquation = numberOfEquation - 1
+        }
+        if(removed == "("){
+            isOpenBracket = false
+        }
+        if(removed == ")"){
+            isOpenBracket = true
         }
     }
     if(numberOfEquation > 0 && !signs.contains(equation.last().toString())){
@@ -220,6 +228,44 @@ fun onClickNumber(view: View) {
         else{
             ow2.text = ""
         }
+
+    }
+
+    fun onClickBracket(view: View) {
+        val ow = findViewById<TextView>(R.id.TextNumberMain)
+        val ow2 = findViewById<TextView>(R.id.TextNumberResult)
+
+        if(ow.text =="0" || ow.text.length == 0){
+            equation = "("
+            isOpenBracket = true
+        }
+        else{
+            if(isOpenBracket && equation.last() == '('){
+                equation = equation.dropLast(1)
+                ow.text = equation
+                isOpenBracket = false
+            }
+            else if(isOpenBracket){
+                equation = equation + ")"
+                isOpenBracket = false
+            }
+            else{
+                if(!signs.contains(equation.last().toString())){
+                    equation = equation + "*("
+                }
+                else{
+                    equation = equation + "("
+                }
+                isOpenBracket = true
+            }
+            ow.text = equation
+        }
+        /*if(equation.last() == ')'){
+            ow2.text = parseAndCalculation(ow.text.toString()).toString()
+        }
+        else{
+            ow2.text = ""
+        }*/
 
     }
 
