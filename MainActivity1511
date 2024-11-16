@@ -261,7 +261,7 @@ fun onClickNumber(view: View) {
             ow.text = equation
         }
         /*if(equation.last() == ')'){
-            ow2.text = parseAndCalculation(ow.text.toString()).toString()
+            ow2.text = parseAndCalculation(equation.toString()).toString()
         }
         else{
             ow2.text = ""
