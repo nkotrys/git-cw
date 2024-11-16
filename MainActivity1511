@@ -234,15 +234,15 @@ fun onClickNumber(view: View) {
     fun onClickBracket(view: View) {
         val ow = findViewById<TextView>(R.id.TextNumberMain)
         val ow2 = findViewById<TextView>(R.id.TextNumberResult)
+        equation = ow.text
 
-        if(ow.text =="0" || ow.text.length == 0){
+        if(equation =="0" || equation.length == 0){
             equation = "("
             isOpenBracket = true
         }
         else{
             if(isOpenBracket && equation.last() == '('){
                 equation = equation.dropLast(1)
-                ow.text = equation
                 isOpenBracket = false
             }
             else if(isOpenBracket){
@@ -252,16 +252,18 @@ fun onClickNumber(view: View) {
             else{
                 if(!signs.contains(equation.last().toString())){
                     equation = equation + "*("
+                    numberOfEquation = numberOfEquation +1
                 }
                 else{
                     equation = equation + "("
                 }
                 isOpenBracket = true
             }
-            ow.text = equation
         }
-        /*if(equation.last() == ')'){
+        ow.text = equation
+        /*if(numberOfEquation > 0 && equation.last() == ')'){
             ow2.text = parseAndCalculation(equation.toString()).toString()
+            
         }
         else{
             ow2.text = ""
